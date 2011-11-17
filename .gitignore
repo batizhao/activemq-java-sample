@@ -1,0 +1,13 @@
+target
+data
+bin
+.classpath
+.project
+.settings
+.springBeans
+*.swp
+*/src/main/java/META-INF
+nohup.out
+.idea
+*.iml
+.DS_Store
