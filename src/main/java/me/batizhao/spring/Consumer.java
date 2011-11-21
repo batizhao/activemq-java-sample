@@ -1,4 +1,4 @@
-package me.baitzhao.spring;
+package me.batizhao.spring;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
