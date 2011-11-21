@@ -1,4 +1,4 @@
-package me.batizhao;
+package me.batizhao.jms;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
