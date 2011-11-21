@@ -3,6 +3,9 @@
 
 activemq-java-sample 是一个使用 ActiveMQ 的示例。
 
+* 在 jms 包中，使用了 Java JMS API。
+* 在 Spring 包中，使用了 Spring JMS。
+
 使用
 -------------------------------------------------------
 
