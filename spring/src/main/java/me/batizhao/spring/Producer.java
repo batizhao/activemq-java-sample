@@ -14,7 +14,7 @@ public class Producer {
         ApplicationContext context = new FileSystemXmlApplicationContext("classpath:spring.xml");
         JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
 
-        jmsTemplate.convertAndSend("Hello World!");
-        System.out.println("Hello World!");
+        jmsTemplate.convertAndSend("Hello Srping!");
+        System.out.println("Hello Srping!");
     }
 }
