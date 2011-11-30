@@ -104,5 +104,18 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>0.3.10</version>
+        </dependency>
+
     </dependencies>
 </project>
