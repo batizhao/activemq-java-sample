@@ -19,6 +19,7 @@ public class MyMessageListener implements MessageListener {
                 String fileName = ((TextMessage) message).getText();
                 System.out.println("Message received: " + fileName);
 
+                //调用缩略图转换服务
                 ThumbnailServices services = new ThumbnailServices();
                 services.doit(fileName);
 

@@ -48,8 +48,8 @@ activemq-java-sample 是一个使用 ActiveMQ 的示例。
     -Durl=http://10.4.247.93/nexus/content/repositories/thirdparty \
     -DrepositoryId=thirdparty
 
-ThumbnailProducer 是这个程序的入口。通过消息，把原图路径传递给 Queue，Listener 收到消息以后，根据路径
-调用 ThumbnailServices ，把项目的 data 目录下生成一张缩略图。
+ThumbnailProducer 是这个程序的入口。通过消息，把原图路径传递给 Queue，Listener 收到消息以后，
+把路径传递给 ThumbnailServices ，在项目的 data 目录下生成一张缩略图。
 
 可以看到，在使用了 Spring JmsTemplate 之后，代码量大大减少。
 并且，根本都不需要再写 Consumer 类，只要把实现 onMessage 方法的 Listener 注册到 Spring 的容器中，就可以实现消息的接收。
