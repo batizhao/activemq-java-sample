@@ -1,6 +1,6 @@
 package me.batizhao.jms.queue;
 
-import me.batizhao.mail.SendMail;
+import me.batizhao.mail.MailServices;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 这是一个异步发送邮件的 Consumer 示例。
  * @author: batizhao
  * @since: 11-11-30 下午4:23
  */
@@ -42,8 +43,9 @@ public class QueueMailConsumer {
                     map.put("subject", msg.getStringProperty("subject"));
                     map.put("content", msg.getStringProperty("content"));
 
-                    SendMail sendMail = new SendMail();
-                    sendMail.sendMail(map);
+                    //从 Queue 中拿到相关的消息后，调用 Mail 服务发送邮件。
+                    MailServices mailServices = new MailServices();
+                    mailServices.sendMail(map);
 
                 } catch (JMSException e) {
                     e.printStackTrace();

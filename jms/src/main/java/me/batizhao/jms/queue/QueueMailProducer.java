@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 这是一个异步发送邮件的 Producer 示例。
  * @author: batizhao
  * @since: 11-11-30 下午3:39
  */
@@ -15,13 +16,14 @@ public class QueueMailProducer {
     public static final String brokerURL = "tcp://localhost:61616";
     public static final String queueName = "jms.queue.mail";
 
+    //在启动程序之前，需要输入正确的 Mail 相关信息。
     public static void main(String[] args) throws Exception {
 
         Map<String, String> map = new HashMap<String, String>();
-        map.put("from_address", "Bati Zhao <zhaobati@gmail.com>");
-        map.put("to_address", "zhaobati@gmail.com");
-        map.put("subject", "Test for ActiveMQ");
-        map.put("content", "Hi, This is test for ActiveMQ.");
+        map.put("from_address", "");
+        map.put("to_address", "");
+        map.put("subject", "");
+        map.put("content", "");
 
         QueueMailProducer producer = new QueueMailProducer();
         producer.run(map);

@@ -9,21 +9,23 @@ import java.io.*;
 import java.util.*;
 
 /**
+ * 这是一个使用 Javamail 发送邮件的示例。
  * @author: batizhao
  * @since: 11-11-25 下午2:02
  */
-public class SendMail {
+public class MailServices {
 
+    //在使用 Queue 之前，最好先运行这个程序，进行单元测试。
     public static void main(String[] args) throws MessagingException, IOException {
 
         Map<String, String> map = new HashMap<String, String>();
-        map.put("from_address", "Bati Zhao <zhaobati@gmail.com>");
-        map.put("to_address", "zhaobati@gmail.com");
+        map.put("from_address", "Bati Zhao <from@gmail.com>");
+        map.put("to_address", "to@gmail.com");
         map.put("subject", "Test for ActiveMQ");
         map.put("content", "Hi, This is test for ActiveMQ.");
 
-        SendMail sendMail = new SendMail();
-        sendMail.sendMail(map);
+        MailServices mailServices = new MailServices();
+        mailServices.sendMail(map);
     }
 
     public boolean sendMail(Map<String, String> map) throws MessagingException, IOException {

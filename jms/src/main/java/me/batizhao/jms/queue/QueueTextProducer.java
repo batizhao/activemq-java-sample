@@ -5,6 +5,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import javax.jms.*;
 
 /**
+ * 这是一个最简单的基于文本消息的发送示例。
  * @author: batizhao
  * @since: 11-11-17 下午4:20
  */
