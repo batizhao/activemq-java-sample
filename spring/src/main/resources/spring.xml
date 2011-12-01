@@ -13,7 +13,22 @@
         <property name="connectionFactory">
             <ref bean="connectionFactory"/>
         </property>
-        <property name="defaultDestinationName" value="myqueue" />
+        <property name="defaultDestination">
+            <ref bean="destination"/>
+        </property>
+    </bean>
+
+    <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0" value="spring.queue.thumbnail"/>
+    </bean>
+
+    <bean id="messageListener" class="me.batizhao.spring.MyMessageListener"/>
+
+    <!-- and this is the message listener container -->
+    <bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="destination"/>
+        <property name="messageListener" ref="messageListener"/>
     </bean>
 
 </beans>

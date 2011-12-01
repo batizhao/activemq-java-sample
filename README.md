@@ -27,13 +27,15 @@ activemq-java-sample 是一个使用 ActiveMQ 的示例。
 
 * QueueMailProducer 是这个示例的入口，在 Map 中封装了消息内容：邮件发送地址，接收地址，主题，内容。
 在启动程序之前，请输入消息的内容。程序运行以后，会把相关消息发送到 Queue 。
-* 运行 QueueMailConsumer ，从 Queue 中接收消息，然后调用 MailServices 服务。完成邮件的异步发送。
+* 运行 QueueMailConsumer ，从 Queue 中接收消息，自动调用 MailServices 服务。完成邮件的异步发送。
 * 在 MailServices 中，定义了 SMTP Server 的相关配置。在调用之前，需要先在 mail.properties 中输入 SMTP 的帐号密码。
 * 在 queue 包中，还有一个基于 Text 的最简单的消息示例。
 * 在 topic 包中，演示了 MQ 中另外一种 Pub/Sub 模式。
 
-在spring 模块中，演示了异步生成缩略图。
+在 spring 模块中，演示了异步生成缩略图。
 -------------------------------------------------------
+
+这个例子是通过给 ThumbnailProducer 传递一个图片，异步生成一张缩略图。
 
 在启动程序之前，需要把 [thumbnailator](http://code.google.com/p/thumbnailator/) 库加入到自己的 Maven 代理仓库。
 
@@ -46,7 +48,10 @@ activemq-java-sample 是一个使用 ActiveMQ 的示例。
     -Durl=http://10.4.247.93/nexus/content/repositories/thirdparty \
     -DrepositoryId=thirdparty
 
+ThumbnailProducer 是这个程序的入口。通过消息，把原图路径传递给 Queue，Listener 收到消息以后，根据路径
+调用 ThumbnailServices ，把项目的 data 目录下生成一张缩略图。
 
-to be continue...
+可以看到，在使用了 Spring JmsTemplate 之后，代码量大大减少。
+并且，根本都不需要再写 Consumer 类，只要把实现 onMessage 方法的 Listener 注册到 Spring 的容器中，就可以实现消息的接收。
 
 
