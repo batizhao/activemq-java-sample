@@ -16,10 +16,27 @@
         <spring.version>3.0.6.RELEASE</spring.version>
     </properties>
 
+    <licenses>
+        <license>
+            <name>Apache 2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
     <modules>
         <module>jms</module>
         <module>spring</module>
     </modules>
+
+    <developers>
+        <developer>
+            <id>batizhao</id>
+            <name>Bati Zhao</name>
+            <email>zhaobati@gmail.com</email>
+        </developer>
+    </developers>
 
     <build>
         <plugins>
@@ -87,6 +104,14 @@
                     <groupId>org.springframework</groupId>
                     <artifactId>spring-context</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
@@ -115,6 +140,18 @@
             <groupId>com.googlecode</groupId>
             <artifactId>thumbnailator</artifactId>
             <version>0.3.10</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.artofsolving</groupId>
+            <artifactId>jodconverter</artifactId>
+            <version>2.2.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
     </dependencies>

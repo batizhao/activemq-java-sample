@@ -11,7 +11,7 @@ import javax.jms.TextMessage;
  * @author: batizhao
  * @since: 11-12-1 下午3:22
  */
-public class MyMessageListener implements MessageListener {
+public class ThumbnailMessageListener implements MessageListener {
 
     public void onMessage(Message message) {
         if (message instanceof TextMessage) {
@@ -21,7 +21,9 @@ public class MyMessageListener implements MessageListener {
 
                 //调用缩略图转换服务
                 ThumbnailServices services = new ThumbnailServices();
-                services.doit(fileName);
+                services.doIt(fileName);
+
+                System.out.println("Image has converted.");
 
             } catch (JMSException e) {
                 throw new RuntimeException(e);

@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 public class ThumbnailServices {
 
-    public void doit(String fileName) {
+    public void doIt(String fileName) {
 
         try {
             Thumbnails.of(new File(fileName))
@@ -23,10 +23,10 @@ public class ThumbnailServices {
 
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         ThumbnailServices services = new ThumbnailServices();
-        services.doit("src/test/resources/01.jpg");
+        services.doIt("src/test/resources/01.jpg");
 
     }
 

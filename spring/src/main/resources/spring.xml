@@ -9,26 +9,50 @@
         </property>
     </bean>
 
-    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+    <!--  Queue Configuration -->
+    <bean id="jmsQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
         <property name="connectionFactory">
             <ref bean="connectionFactory"/>
         </property>
         <property name="defaultDestination">
-            <ref bean="destination"/>
+            <ref bean="queueDestination"/>
         </property>
+        <property name="pubSubDomain" value="false"/>
     </bean>
 
-    <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
-        <constructor-arg index="0" value="spring.queue.thumbnail"/>
+    <bean id="queueDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="spring.queue.thumbnail"/>
     </bean>
 
-    <bean id="messageListener" class="me.batizhao.spring.MyMessageListener"/>
+    <bean id="thumbnailMessageListener" class="me.batizhao.spring.ThumbnailMessageListener"/>
 
-    <!-- and this is the message listener container -->
-    <bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+    <bean id="jmsQueueContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory"/>
-        <property name="destination" ref="destination"/>
-        <property name="messageListener" ref="messageListener"/>
+        <property name="destination" ref="queueDestination"/>
+        <property name="messageListener" ref="thumbnailMessageListener"/>
+    </bean>
+
+    <!--  Topic Configuration -->
+    <bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory">
+            <ref bean="connectionFactory"/>
+        </property>
+        <property name="defaultDestination">
+            <ref bean="topicDestination"/>
+        </property>
+        <property name="pubSubDomain" value="true"/>
+    </bean>
+
+    <bean id="topicDestination" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg value="spring.queue.converter"/>
+    </bean>
+
+    <bean id="converterMessageListener" class="me.batizhao.spring.ConverterMessageListener"/>
+
+    <bean id="jmsTopicContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="topicDestination"/>
+        <property name="messageListener" ref="converterMessageListener"/>
     </bean>
 
 </beans>

@@ -11,17 +11,17 @@ import javax.jms.Session;
 
 /**
  * @author: batizhao
- * @since: 11-12-1 下午4:23
+ * @since: 11-12-5 下午3:56
  */
-public class ThumbnailProducer {
+public class ConverterProducer {
 
     public static void main(String[] args) {
         ApplicationContext context = new FileSystemXmlApplicationContext("classpath:spring.xml");
-        JmsTemplate jmsTemplate = (JmsTemplate) context.getBean("jmsQueueTemplate");
+        JmsTemplate jmsTemplate = (JmsTemplate) context.getBean("jmsTopicTemplate");
 
         jmsTemplate.send(new MessageCreator() {
             public Message createMessage(Session session) throws JMSException {
-                return session.createTextMessage("src/test/resources/01.jpg");
+                return session.createTextMessage("src/test/resources/02.doc");
             }
         });
     }
