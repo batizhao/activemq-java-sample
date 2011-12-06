@@ -54,10 +54,11 @@
 
 在 `ConverterProducer` 中，通过传递一个“Doc文件路径”，异步转换成 PDF 格式。
 
-在程序启动之前，需要安装 OpenOffice 。并且注册为一个 Services。
-其它详细的说明请参照 [jodconverter 的官方文档](http://www.artofsolving.com/opensource/jodconverter)。
+在程序启动之前，需要安装 OpenOffice 。然后运行以下命令：
 
     ./soffice -headless -accept="socket,host=127.0.0.1,port=8100;urp;" -nofirststartwizard
 
+你可以把 OpenOffice 和 jodconverter 结合起来做成一个文件转换的服务。
+支持的格式及其它详细的说明请参照 [jodconverter 的官方文档](http://www.artofsolving.com/opensource/jodconverter)。
 另外，在 [stackoverflow](http://stackoverflow.com/questions/6201736/javausing-apache-poi-how-to-convert-ms-word-file-to-pdf) 上，
 还有人提出可以结合 `Apache POI` 和 `iText` 完成转换工作。
