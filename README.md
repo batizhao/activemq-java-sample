@@ -61,4 +61,4 @@
 你可以把 OpenOffice 和 jodconverter 结合起来做成一个文件转换的服务。
 支持的格式及其它详细的说明请参照 [jodconverter 的官方文档](http://www.artofsolving.com/opensource/jodconverter)。
 另外，在 [stackoverflow](http://stackoverflow.com/questions/6201736/javausing-apache-poi-how-to-convert-ms-word-file-to-pdf) 上，
-还有人提出可以结合 `Apache POI` 和 `iText` 完成转换工作。
+还有人提出可以结合 `Apache POI` 和 `iText` 完成转换工作。这部分工作暂时没有实现，你可以自己验证。
